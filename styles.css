@@ -6,10 +6,10 @@ body {
 }
 
 .transparent-sheet {
-    max-width: 80%; /* Adjust the width as desired */
-    margin: 50px auto; /* Centers the sheet */
+    max-width: 80%; 
+    margin: 50px auto; 
     padding: 20px;
-    background: rgba(255, 255, 255, 0.8); /* White with 80% opacity */
-    border-radius: 8px; /* Rounded corners, optional */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
