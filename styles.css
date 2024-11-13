@@ -1,10 +1,15 @@
 body {
+    background-color: black;
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-image: url('https://wallpapers.com/wallpapers/4k-marvel-characters-w5lvb7mkf3d8lute.html');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
+}
+
+.transparent-sheet {
+    max-width: 80%; /* Adjust the width as desired */
+    margin: 50px auto; /* Centers the sheet */
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8); /* White with 80% opacity */
+    border-radius: 8px; /* Rounded corners, optional */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
 }
