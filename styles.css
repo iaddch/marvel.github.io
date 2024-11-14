@@ -18,7 +18,8 @@ nav a: hover {
 }
 
 .transparent-sheet {
-    max-width: 80%; 
+    width: 90%; 
+    height: 300px;
     margin: 50px auto; 
     padding: 20px;
     background: rgba(195, 0, 0, 0.8);
