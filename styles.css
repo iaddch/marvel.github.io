@@ -4,6 +4,13 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
 }
+nav a {
+    color: white;
+    text-decoration: none;
+}
+nav a: hover {
+    color: yellow
+}
 
 .transparent-sheet {
     max-width: 80%; 
