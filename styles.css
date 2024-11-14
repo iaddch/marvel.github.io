@@ -6,16 +6,15 @@ body {
 }
 nav a {
     color: white;
-    transition: transform 0.3s ease;
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 5px;
     text-decoration: none;
+    padding: 5px 10px;
+    transition: transform 0.3s ease;
 }
-nav a: hover {
-    color: white;
-    transform: scale(1.2);
+
+nav a:hover {
+    transform: scale(1.2); 
 }
+
 
 .transparent-sheet {
     width: 80%; 
