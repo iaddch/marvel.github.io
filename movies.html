@@ -13,6 +13,36 @@
     </title>
 </head>
 <body>
+    <script src="path/to/crypto-js.min.js">
+    async function fetchRelatedMovies(characterName) {
+        const publicKey = '20e694277990444eae3213bd94514adc';
+        const privateKey = 'c04e1332ccaa18f2b21f9a4c4d867b8563f569e6';
+        const timestamp = new Date().getTime();
+        const hash = CryptoJS.MD5(timestamp + privateKey + publicKey).toString(); // Using CryptoJS for hash
+
+        try {
+            const response = await fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${characterName}&ts=${timestamp}&apikey=${publicKey}&hash=${hash}`);
+            const data = await response.json();
+            const moviesDiv = document.getElementById('related-movies');
+            
+            if (data.data.results.length > 0) {
+                const series = data.data.results[0].series.items; // Fetching related series (can represent movies/appearances)
+                moviesDiv.innerHTML = '<ul>' + series.map(item => `<li>${item.name}</li>`).join('') + '</ul>';
+            } else {
+                moviesDiv.innerHTML = 'No related movies or series found.';
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            document.getElementById('related-movies').innerHTML = 'Error loading movies or series.';
+        }
+    }
+
+    // Call the function with a character name (example: Spider-Man)
+    fetchRelatedMovies('Spider-Man');
+</script>
+
+<div id="related-movies">Loading...</div>
+
     <div class="transparent-sheet">
 <nav>
     <a href="index.html">Home</a> |
