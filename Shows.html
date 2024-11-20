@@ -1,5 +1,6 @@
 <html>
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
     <style>
          body {
             color: white;
@@ -13,7 +14,35 @@
     </title>
 </head>
 <body>
-    <div class="transparent-sheet">
+    <div class="transparent-sheet">Loading content...</div>
+       <script>
+        async function fetchRelatedMovies(SpiderMan) {
+            const characterName = 'Spider-Man';
+            const publicKey = '20e694277990444eae3213bd94514adc';
+            const privateKey = 'c04e1332ccaa18f2b21f9a4c4d867b8563f569e6';
+            const timestamp = new Date().getTime();
+            const hash = CryptoJS.MD5(timestamp + privateKey + publicKey).toString();
+
+            try {
+                const response = await fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${characterName}&ts=${timestamp}&apikey=${publicKey}&hash=${hash}`);
+                const data = await response.json();
+                const sheetDiv = document.getElementById('transparent-sheet'); // Using your existing <div>
+
+                if (data.data.results.length > 0) {
+                    const series = data.data.results[0].series.items;
+                    sheetDiv.innerHTML = '<ul>' + series.map(item => `<li>${item.name}</li>`).join('') + '</ul>';
+                } else {
+                    sheetDiv.innerHTML = 'No related movies or series found.';
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                document.getElementById('transparent-sheet').innerHTML = 'Error loading movies or series.';
+            }
+        }
+
+        // Example call to fetch data for 'Spider-Man'
+        fetchRelatedMovies('Spider-Man');
+    </script>
     <nav>
       <a href="index.html">Home</a> |
       <a href="movies.html">Movies</a> |
